@@ -10,26 +10,34 @@ header {
     padding: 20px;
     text-align: center;
     background-color: #007f5f;
+    position: relative;
 }
 
 #logo {
     max-width: 200px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
 }
 
 main {
     margin: 40px;
+    background-color: #6b7b8e;
+    border-radius: 10px;
+    padding: 20px;
+    color: #ffffff;
 }
 
 #hero {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
 }
 
 #cool-image {
-    max-width: 50%;
+    max-width: 45%;
     height: auto;
+    border-radius: 10px;
 }
 
 #text-block {
@@ -43,6 +51,9 @@ h1 {
 footer {
     padding: 20px;
     text-align: center;
-    background-color: #00b4d8;
+    background-color: #007f5f;
     color: #ffffff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
