@@ -62,3 +62,10 @@ footer {
 #university-logos img {
     max-width: 100px;
 }
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
