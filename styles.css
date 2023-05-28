@@ -8,20 +8,6 @@ body {
     color: #ffffff;
 }
 
-header {
-    padding: 20px;
-    text-align: right;
-    background-color: #007f5f;
-    position: relative;
-}
-
-#logo {
-    max-width: 200px;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-
 main {
     margin: 40px;
     background-color: #6b7b8e;
@@ -31,20 +17,26 @@ main {
 }
 
 #hero {
+    position: relative;
+    height: 300px;
+    background: url(cool-image.png) no-repeat center center/cover;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
 }
 
-#cool-image {
+#logo-text {
+    text-align: center;
     max-width: 80%;
-    height: auto;
-    border-radius: 10px;
+}
+
+#logo {
+    max-width: 80px;
 }
 
 #text-block-1, #text-block-2 {
-    max-width: 80%;
+    margin-top: 20px;
     text-align: center;
 }
 
@@ -72,4 +64,8 @@ footer {
 
 #university-logos img {
     max-width: 100px;
+}
+
+#university-logos a {
+    color: #ffffff;
 }
