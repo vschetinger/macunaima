@@ -47,9 +47,8 @@ footer {
     padding: 20px;
     text-align: center;
     background-color: rgba(107, 123, 142, 0.7);
-    position: fixed;
+    position: relative;
     width: 100%;
-    bottom: 0;
 }
 
 #university-logos {
@@ -60,4 +59,6 @@ footer {
     padding-top: 20px;
 }
 
-#university-log
+#university-logos img {
+    max-width: 100px;
+}
