@@ -74,13 +74,16 @@ footer {
 
 .video-wrapper {
     width: 100%;
-    position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
     margin-bottom: 20px;
 }
 
-.video-wrapper h3 {
+.video-content {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+}
+
+.video-content h3 {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -88,15 +91,17 @@ footer {
     background: rgba(0, 0, 0, 0.6);
     padding: 5px;
     border-radius: 5px;
+    z-index: 1;
 }
 
-.video-wrapper iframe {
+.video-content iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
+
 
 @media only screen and (max-width: 1024px) {
     body {
