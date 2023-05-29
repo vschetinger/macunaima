@@ -106,7 +106,8 @@ footer {
 }
 
 #university-logos img {
-    max-width: 80%; /* Prevents logo images from exceeding the width of the parent */
+    max-width: 100px;
+    max-height: 50px; /* add this */
     height: auto;
 }
 
@@ -139,5 +140,10 @@ footer {
 
     footer {
         padding: 5%;
+    }
+    
+    #university-logos img {
+        max-width: 60px;
+        max-height: 30px; /* add this */
     }
 }
