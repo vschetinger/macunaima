@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;700&display=swap');
-body:before {
-    content: "";
-    display: none;
-}
+
 body {
     font-family: 'Lora', serif;
     margin: 0;
@@ -14,95 +11,17 @@ body {
     background-position: 25% 30%;
 }
 
+@media only screen and (min-width: 1025px) {
+    body {
+        background-attachment: fixed;
+    }
+}
+
 h1, h2, h3 {
     font-family: 'Oswald', sans-serif;
 }
 
-footer {
-    padding: 20px;
-    text-align: center;
-    background-color: rgba(107, 123, 142, 0.7);
-    position: relative;
-    width: 100%;
-    word-wrap: break-word; /* for long words and links */
-}
-
-main {
-    margin: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(107, 123, 142, 0.7);
-    border-radius: 10px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.stream-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.video-wrapper {
-    margin: 1rem 0;
-    flex: 1 0 40%; /* This makes it so that on larger screens there are two videos side by side, and on smaller screens, each video gets its own line */
-    position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-    height: 0;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-}
-
-#logo {
-    max-width: 80px;
-}
-
-#text-block-1, #project-section {
-    margin-top: 20px;
-}
-
-h2 {
-    color: #ffb703;
-}
-
-footer {
-    box-sizing: border-box; /* Add this line */
-    padding: 20px;
-    text-align: center;
-    background-color: rgba(107, 123, 142, 0.7);
-    position: relative;
-    width: 100%;
-}
-
-#university-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding-top: 20px;
-}
-
-#university-logos img {
-    max-width: 100px;
-    max-height: 50px; /* add this */
-    height: auto;
-    object-fit: contain;
-}
+/* the rest of your code here... */
 
 @media only screen and (max-width: 1024px) {
     body {
@@ -137,6 +56,6 @@ footer {
     
     #university-logos img {
         max-width: 60px;
-        max-height: 30px; /* add this */
+        max-height: 30px;
     }
 }
