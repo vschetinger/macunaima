@@ -8,7 +8,7 @@ body:before {
     left: 0;
     background: url('cool-image.png') no-repeat center center; 
     background-size: cover;
-    background-position: 35% 30%;
+    background-position: 25% 30%; 
     z-index: -1;
 }
 
@@ -114,7 +114,7 @@ footer {
 
 @media only screen and (max-width: 1024px) {
     body:before {
-        position: sticky;
+        position: absolute;
     }
     body {
         overflow-x: hidden;
