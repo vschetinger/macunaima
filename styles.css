@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto+Slab:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;700&display=swap');
 body:before {
     content: "";
     position: fixed;
@@ -14,17 +13,26 @@ body:before {
 }
 
 body {
-    background: url('cool-image.png') no-repeat center center fixed; 
-    background-size: cover;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Lora', serif;
     margin: 0;
     padding: 0;
     color: #ffffff;
     overflow-x: hidden;
+    background: url('cool-image.png') no-repeat center center fixed; 
+    background-size: cover;
 }
 
 h1, h2, h3 {
-    font-family: 'Abril Fatface', cursive;
+    font-family: 'Oswald', sans-serif;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(107, 123, 142, 0.7);
+    position: relative;
+    width: 100%;
+    word-wrap: break-word;
 }
 
 main {
