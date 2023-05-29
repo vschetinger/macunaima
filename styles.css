@@ -113,6 +113,9 @@ footer {
 }
 
 @media only screen and (max-width: 1024px) {
+    body:before {
+        position: sticky;
+    }
     body {
         overflow-x: hidden;
     }
