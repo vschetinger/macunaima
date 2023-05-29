@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 18px;
+    }
+    main {
+        margin: 20px;
+        max-height: 400px;
+        overflow-y: scroll;
+        background-position: 35% 30%;
+    }
+    #logo {
+        max-width: 120px;
+    }
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
