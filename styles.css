@@ -1,55 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-@media only screen and (max-width: 1024px) {
-    body {
-        font-size: 18px;
-    }
-    
-    #text-block-1, #project-section {
-        padding: 20px 20px;
-        margin-top: 20px;
-        overflow-y: auto;
-        height: 50vh;  /* Adjust this value according to your needs */
-    }
-
-    #hero {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: justify;
-    }
-
-    #university-logos img {
-        max-width: 80px;
-    }
-
-    #logo {
-        max-width: 120px;
-    }
-}
-
-
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('cool-image.png') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    overflow-x: hidden; 
     color: #ffffff;
-    overflow-x: hidden;
 }
 
 main {
-    margin: 40px;
+    margin: 0 auto;
+    padding: 2em;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
     background-color: rgba(107, 123, 142, 0.7);
     border-radius: 10px;
-    padding: 20px;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
 #hero {
@@ -66,6 +31,7 @@ main {
 
 #text-block-1, #project-section {
     margin-top: 20px;
+    text-align: justify;
 }
 
 h2 {
@@ -92,9 +58,32 @@ footer {
     max-width: 100px;
 }
 
-.video-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 18px;
+    }
 
+    main {
+        padding: 10%;
+        width: 80%;
+    }
+    
+    #hero {
+        align-items: flex-start;
+    }
+
+    #text-block-1, #project-section {
+        padding: 1em;
+        height: 50vh;  
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #logo {
+        max-width: 120px;
+    }
+    
+    #university-logos img {
+        max-width: 80px;
+    }
+}
