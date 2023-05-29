@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto+Slab:wght@400;700&display=swap');
 
 body:before {
     content: "";
@@ -14,11 +14,15 @@ body:before {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', serif;
     margin: 0;
     padding: 0;
     color: #ffffff;
     overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Abril Fatface', cursive;
 }
 
 main {
@@ -30,6 +34,28 @@ main {
     border-radius: 10px;
     padding: 20px;
     box-sizing: border-box;
+}
+
+.stream-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.video-wrapper {
+    margin: 1rem 0;
+    flex: 1 0 40%; /* This makes it so that on larger screens there are two videos side by side, and on smaller screens, each video gets its own line */
+    position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #hero {
@@ -71,21 +97,6 @@ footer {
 #university-logos img {
     max-width: 100px;
 }
-
-.video-wrapper {
-    position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-    height: 0;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 
 @media only screen and (max-width: 600px) {
     body {
