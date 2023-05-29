@@ -13,7 +13,9 @@ body {
 
 @media only screen and (min-width: 1025px) {
     body {
-        background-attachment: fixed;
+        background: url('cool-image.png') no-repeat center center fixed; 
+        background-size: cover;
+        background-position: 25% 30%;
     }
 }
 
