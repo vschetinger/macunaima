@@ -1,25 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;700&display=swap');
 body:before {
     content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: url('cool-image.png') no-repeat center center; 
-    background-size: cover;
-    background-position: 25% 30%; 
-    z-index: -1;
+    display: none;
 }
-
 body {
     font-family: 'Lora', serif;
     margin: 0;
     padding: 0;
     color: #ffffff;
     overflow-x: hidden;
-    background: url('cool-image.png') no-repeat center center fixed; 
+    background: url('cool-image.png') no-repeat center center scroll; 
     background-size: cover;
+    background-position: 25% 30%;
 }
 
 h1, h2, h3 {
@@ -113,11 +105,8 @@ footer {
 }
 
 @media only screen and (max-width: 1024px) {
-    body:before {
-        position: absolute;
-    }
     body {
-        overflow-x: hidden;
+        background-position: 25% 30%; 
     }
     
     main {
