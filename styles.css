@@ -23,7 +23,41 @@ h1, h2, h3 {
     font-family: 'Oswald', sans-serif;
 }
 
-/* the rest of your code here... */
+main {
+    margin: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(107, 123, 142, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+footer {
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(107, 123, 142, 0.7);
+    position: relative;
+    width: 100%;
+    word-wrap: break-word; 
+}
+
+#university-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+#university-logos img {
+    max-width: 100px;
+    max-height: 50px;
+    height: auto;
+    object-fit: contain;
+}
 
 @media only screen and (max-width: 1024px) {
     body {
@@ -34,16 +68,8 @@ h1, h2, h3 {
         margin: 5%;
     }
 
-    #hero {
-        text-align: justify;
-    }
-
     #logo {
         max-width: 150px;
-    }
-
-    #text-block-1, #project-section {
-        text-align: justify;
     }
 
     .video-responsive {
