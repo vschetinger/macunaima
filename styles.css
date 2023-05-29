@@ -4,17 +4,29 @@
     body {
         font-size: 18px;
     }
-    main {
-        -webkit-overflow-scrolling: touch;
-        margin: 20px;
-        max-height: 400px;
-        overflow-y: scroll;
-        background-position: 300px 407px;
+    
+    #text-block-1, #project-section {
+        padding: 20px 20px;
+        margin-top: 20px;
+        overflow-y: auto;
+        height: 50vh;  /* Adjust this value according to your needs */
     }
+
+    #hero {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: justify;
+    }
+
+    #university-logos img {
+        max-width: 80px;
+    }
+
     #logo {
         max-width: 120px;
     }
 }
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -26,6 +38,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     color: #ffffff;
+    overflow-x: hidden;
 }
 
 main {
