@@ -7,35 +7,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto Slab', serif;
-            color: #1a1a1a;
-        }
-        #conversation {
-            margin: 50px auto;
-            width: 70%;
-            background-color: #fdfdfd;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
-        }
-        .user, .ai {
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
         }
 
-        .footer img {
+        header {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        header img {
             width: 70px;
             height: 70px;
         }
-        .user {
-            background-color: #C1E1FF;
-            color: #000;
-        }
-        .ai {
-            background-color: #ECE5B4;
-            color: #000;
-        }
+
         .footer {
             width: 100%;
             text-align: center;
@@ -45,14 +34,21 @@
             color: white;
             padding: 10px 0;
         }
-        .footer img {
-            width: 70px;
-            height: 70px;
-        }
+
         .footer a {
             color: white;
             text-decoration: none;
             font-size: 20px;
+        }
+
+        .user {
+            background-color: #C1E1FF;
+            color: #000;
+        }
+
+        .ai {
+            background-color: #ECE5B4;
+            color: #000;
         }
 
     </style>
@@ -77,7 +73,7 @@
                     currentClass = 'ai';
                     textContent = line.substring(4).trim();
                 } else if (line.startsWith('{{') && line.endsWith('}}')) {
-                    const marker = line.slice(2, -2);
+                    const marker = line.slice(2, -2).trim();
                     const markerElement = document.createElement('div');
                     markerElement.id = marker;
                     elements.push(markerElement);
@@ -103,11 +99,15 @@
             formattedLines.forEach(element => conversationElement.appendChild(element));
         });
     </script>
-    <footer class="footer">
+    <header>
         <img src="logo.png" alt="Logo">
-        <p>This conversation is a part of the OpenAI vs Umberto Eco project.</p>
+        <p>This is a conversation using a tool called 'chatPDF', that allows a conversation with chatGPT about the contents of a pdf. The pdf used in this case was the book "The Open Work" by Umberto Eco, translated by Anna Cancogni.</p>
+    </header>
+    
+    <footer class="footer">
         <a href="index.html">Back to main</a>
     </footer>
+    
     
 </body>
 </html>

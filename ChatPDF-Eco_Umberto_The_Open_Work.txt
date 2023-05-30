@@ -192,6 +192,10 @@ Latent spaces that are highly constrained or limited in their range of possible 
 
 Ultimately, whether a particular latent space is considered an open work depends on how it is used by creators and interpreters. A skilled artist or designer may be able to use even a highly constrained latent space in creative ways that invite multiple interpretations and meanings.
 
+
+{{dada}}
+
+
 Me: How could Dada be used as a methodology for exploration of the latent space L in search for good L(T)s?
 
 PDF: Dadaism, as an art movement that emerged in the early 20th century, was characterized by its rejection of traditional artistic conventions and its embrace of chance and randomness. In this sense, Dadaism can be seen as a methodology for exploring the latent space L in search of good L(T)s.
