@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main id="conversation"></main>
+    <button id="backButton" onclick="window.history.back();">Back</button>
+    
+    <script>
+        fetch('ChatPDF-Eco_Umberto_The_Open_Work.txt')
+        .then(response => response.text())
+        .then(data => {
+            const lines = data.split('\n');
+            let currentClass = '';
+            const formattedLines = lines.reduce((elements, line) => {
+                let textContent;
+                if (line.startsWith('Me:')) {
+                    currentClass = 'user';
+                    textContent = line.substring(3).trim();  // Remove 'Me:' prefix
+                } else if (line.startsWith('PDF:')) {
+                    currentClass = 'ai';
+                    textContent = line.substring(4).trim();  // Remove 'PDF:' prefix
+                } else {
+                    textContent = line.trim();  // Continue the previous message
+                }
+                const lastElement = elements[elements.length - 1];
+                if (lastElement && lastElement.classList.contains(currentClass)) {
+                    lastElement.textContent += '\n' + textContent;  // Append to the previous message
+                } else {
+                    const element = document.createElement('div');
+                    element.classList.add(currentClass);
+                    element.textContent = textContent;
+                    elements.push(element);
+                }
+                return elements;
+            }, []);
+            const conversationElement = document.getElementById('conversation');
+            formattedLines.forEach(element => conversationElement.appendChild(element));
+        });
+    </script>
+</body>
+</html>
