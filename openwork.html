@@ -4,6 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto:wght@300&display=swap');
+
+        body {
+            background-color: #191A20;
+            font-family: 'Roboto', sans-serif;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        #dialogue {
+            background-color: #FFFFFF;
+            color: #000000;
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 760px; /* Subtract twice the footer's padding */
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            overflow-y: scroll;
+            height: calc(100vh - 100px); /* Adjust as needed */
+        }
+
+        p.ai {
+            background-color: #98D7C2;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        p.user {
+            background-color: #F4B48B;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        #footer {
+            background-color: rgba(75, 66, 55, 0.7);
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            max-width: 800px; /* Make it the same width as the dialogue box */
+            margin: 0 auto; /* Center the footer */
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0px -5px 10px rgba(0,0,0,0.5);
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        #footer p {
+            text-align: justify;
+            margin: 0 auto;
+            width: 80%;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        a {
+            color: #FFFFFF;
+        }
+        #logo {
+            max-width: 200px;
+            margin: auto;
+            display: block;
+        }
+        @media screen and (max-width: 600px) {
+            #footer {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+        }
+    p.tagged {
+        background-color: #98D7D5; /* adjust color as needed */
+        color: #FFFFFF;
+    }
+    </style>
+</head>
+<body>
+    <div id="dialogue">
+        <img id="logo" src="logo.png">
+    </div>
+    <div id="footer">
+        <p>This page showcases a tool called "ChatPDF", that enables a dynamic conversation with the GPT-3.5 language model about the contents of a specific PDF. In this case, the PDF was the book "The Open Work" by Umberto Eco, translated by Anna Cancogni.</p>
+        <a href="index.html">Back to Main</a>
+    </div>
+    
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             fetch('ChatPDF-Eco_Umberto_The_Open_Work.txt')
@@ -52,63 +137,6 @@
         });
     </script>
     
-</head>
-<body>
-    <div id="dialogue">
-        <img id="logo" src="logo.png">
-    </div>
-    <div id="footer">
-        <p>This page showcases a tool called "ChatPDF", that enables a dynamic conversation with the GPT-3.5 language model about the contents of a specific PDF. In this case, the PDF was the book "The Open Work" by Umberto Eco, translated by Anna Cancogni.</p>
-        <a href="index.html">Back to Main</a>
-    </div>
-    
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            fetch('ChatPDF-Eco_Umberto_The_Open_Work.txt')
-                .then(response => response.text())
-                .then(text => {
-                    function formattedLines() {
-                        const lines = text.split('\n');
-                        const formatted = [];
-    
-                        let lastSpeaker = '';
-                        let lastContent = '';
-                        for (const line of lines) {
-                            const match = line.match(/^(PDF|Me): (.*)/);
-                            if (match) {
-                                if (lastSpeaker !== '') {
-                                    formatted.push({ speaker: lastSpeaker, content: lastContent.trim(), tagged: lastContent.includes('{{#dada}}') });
-                                }
-                                lastSpeaker = match[1] === 'Me' ? 'user' : 'ai';
-                                lastContent = match[2];
-                            } else {
-                                lastContent += ' ' + line;
-                            }
-                        }
-    
-                        if (lastSpeaker !== '') {
-                            formatted.push({ speaker: lastSpeaker, content: lastContent.trim(), tagged: lastContent.includes('{{#dada}}') });
-                        }
-                        
-                        return formatted;
-                    }
-                    
-                    const lines = formattedLines();
-    
-                    const dialogue = document.getElementById('dialogue');
-                    for (const line of lines) {
-                        const p = document.createElement('p');
-                        p.classList.add(line.speaker);
-                        if (line.tagged) {
-                            p.classList.add('tagged');
-                            line.content = line.content.replace('{{#dada}}', ''); // remove the tag from the displayed text
-                        }
-                        p.textContent = line.content;
-                        dialogue.appendChild(p);
-                    }
-                });
-        });
-    </script>
     
     
         
