@@ -45,7 +45,6 @@
             text-align: center;
             position: fixed;
             bottom: 0;
-            max-width: 800px; /* Make it the same width as the dialogue box */
             margin: 0 auto; /* Center the footer */
             left: 0;
             right: 0;
@@ -54,6 +53,7 @@
             color: #FFFFFF;
             text-shadow: 2px 2px 4px #000000;
         }
+
         #footer p {
             text-align: justify;
             margin: 0 auto;
@@ -133,7 +133,10 @@
                         let firstHTML = first;
                         const tagMatch = first.match(/{{#([^}]*)}}/);
                         if (tagMatch) {
-                            firstHTML = first.replace(tagMatch[0], `<span id="${tagMatch[1]}"></span>`);
+                            const div = document.createElement('div');
+                            div.id = tagMatch[1];
+                            dialogue.appendChild(div);
+                            firstHTML = first.replace(tagMatch[0], '');
                         }
                         p.innerHTML = firstHTML;
     
@@ -144,7 +147,10 @@
                             let partHTML = part;
                             const tagMatchPart = part.match(/{{#([^}]*)}}/);
                             if (tagMatchPart) {
-                                partHTML = part.replace(tagMatchPart[0], `<span id="${tagMatchPart[1]}"></span>`);
+                                const div = document.createElement('div');
+                                div.id = tagMatchPart[1];
+                                dialogue.appendChild(div);
+                                partHTML = part.replace(tagMatchPart[0], '');
                             }
                             pExtra.innerHTML = '- ' + partHTML;
                             dialogue.appendChild(pExtra);
@@ -153,6 +159,7 @@
                 });
         });
     </script>
+    
     
     
     
