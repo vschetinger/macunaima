@@ -132,7 +132,7 @@
                         let firstHTML = first;
                         const tagMatch = first.match(/{{#([^}]*)}}/);
                         if (tagMatch) {
-                            firstHTML = first.replace(tagMatch[0], `<a name="${tagMatch[1]}"></a>`);
+                            firstHTML = first.replace(tagMatch[0], `<span id="${tagMatch[1]}"></span>`);
                         }
                         p.innerHTML = firstHTML;
     
@@ -143,7 +143,7 @@
                             let partHTML = part;
                             const tagMatchPart = part.match(/{{#([^}]*)}}/);
                             if (tagMatchPart) {
-                                partHTML = part.replace(tagMatchPart[0], `<a name="${tagMatchPart[1]}"></a>`);
+                                partHTML = part.replace(tagMatchPart[0], `<span id="${tagMatchPart[1]}"></span>`);
                             }
                             pExtra.innerHTML = '- ' + partHTML;
                             dialogue.appendChild(pExtra);
@@ -152,6 +152,7 @@
                 });
         });
     </script>
+    
     
     
     
