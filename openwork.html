@@ -24,6 +24,8 @@
             max-width: 800px;
             font-family: 'Merriweather', serif;
             font-size: 18px;
+            overflow-y: scroll;
+            height: calc(100vh - 100px); /* Adjust as needed */
         }
         p.ai {
             background-color: #98D7C2;
@@ -44,6 +46,10 @@
             width: 100%;
             left: 0;
             right: 0;
+            z-index: 999;
+            box-shadow: 0px -5px 10px rgba(0,0,0,0.5);
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px #000000;
         }
         a {
             color: #FFFFFF;
