@@ -93,7 +93,7 @@
                     function formattedLines() {
                         const lines = text.split('\n');
                         const formatted = [];
-        
+    
                         let lastSpeaker = '';
                         let lastContent = '';
                         for (const line of lines) {
@@ -108,7 +108,7 @@
                                 lastContent += '\n' + line;
                             }
                         }
-        
+    
                         if (lastSpeaker !== '') {
                             formatted.push({ speaker: lastSpeaker, content: lastContent });
                         }
@@ -117,17 +117,18 @@
                     }
                     
                     const lines = formattedLines();
-        
-                    const content = document.getElementById('content');
+    
+                    const dialogue = document.getElementById('dialogue');
                     for (const line of lines) {
                         const div = document.createElement('div');
                         div.classList.add(line.speaker);
                         div.textContent = line.content;
-                        content.appendChild(div);
+                        dialogue.appendChild(div);
                     }
                 });
         });
-        </script>
+    </script>
+    
         
       
     
