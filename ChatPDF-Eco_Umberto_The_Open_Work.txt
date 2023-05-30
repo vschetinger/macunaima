@@ -193,7 +193,7 @@ Latent spaces that are highly constrained or limited in their range of possible 
 Ultimately, whether a particular latent space is considered an open work depends on how it is used by creators and interpreters. A skilled artist or designer may be able to use even a highly constrained latent space in creative ways that invite multiple interpretations and meanings.
 
 
-{{dada}}
+{{#dada}}
 
 
 Me: How could Dada be used as a methodology for exploration of the latent space L in search for good L(T)s?
