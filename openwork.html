@@ -104,7 +104,7 @@
                             const match = line.match(/^(PDF|Me): (.*)/);
                             if (match) {
                                 if (lastSpeaker !== '') {
-                                    formatted.push({ speaker: lastSpeaker, content: lastContent.trim(), tagged: lastContent.includes('{{#') });
+                                    formatted.push({ speaker: lastSpeaker, content: lastContent.trim() });
                                 }
                                 lastSpeaker = match[1] === 'Me' ? 'user' : 'ai';
                                 lastContent = match[2];
@@ -114,7 +114,7 @@
                         }
     
                         if (lastSpeaker !== '') {
-                            formatted.push({ speaker: lastSpeaker, content: lastContent.trim(), tagged: lastContent.includes('{{#') });
+                            formatted.push({ speaker: lastSpeaker, content: lastContent.trim() });
                         }
                         
                         return formatted;
@@ -130,11 +130,9 @@
                         p.classList.add(line.speaker);
     
                         let firstHTML = first;
-                        if (line.tagged) {
-                            const tagMatch = first.match(/{{#([^}]*)}}/);
-                            if (tagMatch) {
-                                firstHTML = first.replace(tagMatch[0], `<a name="${tagMatch[1]}"></a>`);
-                            }
+                        const tagMatch = first.match(/{{#([^}]*)}}/);
+                        if (tagMatch) {
+                            firstHTML = first.replace(tagMatch[0], `<a name="${tagMatch[1]}"></a>`);
                         }
                         p.innerHTML = firstHTML;
     
@@ -142,13 +140,19 @@
                         for (const part of parts) {
                             const pExtra = document.createElement('p');
                             pExtra.classList.add(line.speaker);
-                            pExtra.textContent = '- ' + part;
+                            let partHTML = part;
+                            const tagMatchPart = part.match(/{{#([^}]*)}}/);
+                            if (tagMatchPart) {
+                                partHTML = part.replace(tagMatchPart[0], `<a name="${tagMatchPart[1]}"></a>`);
+                            }
+                            pExtra.innerHTML = '- ' + partHTML;
                             dialogue.appendChild(pExtra);
                         }
                     }
                 });
         });
     </script>
+    
     
     
     
