@@ -128,11 +128,16 @@
                         const first = parts.shift();
                         const p = document.createElement('p');
                         p.classList.add(line.speaker);
+    
+                        let firstHTML = first;
                         if (line.tagged) {
-                            p.classList.add('tagged');
-                            line.content = line.content.replace(/\{\{#[^}]*\}\}/g, ''); // remove the tag from the displayed text
+                            const tagMatch = first.match(/{{#([^}]*)}}/);
+                            if (tagMatch) {
+                                firstHTML = first.replace(tagMatch[0], `<a name="${tagMatch[1]}"></a>`);
+                            }
                         }
-                        p.textContent = first;
+                        p.innerHTML = firstHTML;
+    
                         dialogue.appendChild(p);
                         for (const part of parts) {
                             const pExtra = document.createElement('p');
@@ -144,6 +149,7 @@
                 });
         });
     </script>
+    
     
     
     
