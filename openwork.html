@@ -74,6 +74,10 @@
                 padding: 10px;
             }
         }
+    p.tagged {
+        background-color: #98D7D5; /* adjust color as needed */
+        color: #FFFFFF;
+    }
     </style>
 </head>
 <body>
@@ -100,17 +104,17 @@
                             const match = line.match(/^(PDF|Me): (.*)/);
                             if (match) {
                                 if (lastSpeaker !== '') {
-                                    formatted.push({ speaker: lastSpeaker, content: lastContent });
+                                    formatted.push({ speaker: lastSpeaker, content: lastContent.trim(), tagged: lastContent.includes('{{#dada}}') });
                                 }
-                                lastSpeaker = match[1];
+                                lastSpeaker = match[1] === 'Me' ? 'user' : 'ai';
                                 lastContent = match[2];
                             } else {
-                                lastContent += '\n' + line;
+                                lastContent += ' ' + line;
                             }
                         }
     
                         if (lastSpeaker !== '') {
-                            formatted.push({ speaker: lastSpeaker, content: lastContent });
+                            formatted.push({ speaker: lastSpeaker, content: lastContent.trim(), tagged: lastContent.includes('{{#dada}}') });
                         }
                         
                         return formatted;
@@ -120,14 +124,19 @@
     
                     const dialogue = document.getElementById('dialogue');
                     for (const line of lines) {
-                        const div = document.createElement('div');
-                        div.classList.add(line.speaker);
-                        div.textContent = line.content;
-                        dialogue.appendChild(div);
+                        const p = document.createElement('p');
+                        p.classList.add(line.speaker);
+                        if (line.tagged) {
+                            p.classList.add('tagged');
+                            line.content = line.content.replace('{{#dada}}', ''); // remove the tag from the displayed text
+                        }
+                        p.textContent = line.content;
+                        dialogue.appendChild(p);
                     }
                 });
         });
     </script>
+    
     
         
       
