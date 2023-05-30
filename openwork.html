@@ -87,57 +87,51 @@
     
     <script>
         fetch('ChatPDF-Eco_Umberto_The_Open_Work.txt')
-            .then(response => response.text())
-            .then(data => {
-                const lines = data.split('\n');
-    
-                const formattedLines = lines.reduce((elements, line) => {
-                    let textContent;
-                    let currentClass;
-                    if (line.startsWith('Me:')) {
-                        currentClass = 'user';
-                        textContent = line.substring(3).trim();
-                    } else if (line.startsWith('PDF:')) {
-                        currentClass = 'ai';
-                        textContent = line.substring(4).trim();
-                    } else if (line.startsWith('{{') && line.endsWith('}}')) {
-                        const marker = line.slice(2, -2).trim();
-                        const markerElement = document.createElement('div');
-                        markerElement.id = marker;
-                        elements.push(markerElement);
-                        return elements;
-                    } else {
-                        textContent = line.trim();
-                    }
-    
-                    const lastElement = elements[elements.length - 1];
-                    if (lastElement && lastElement.tagName === 'P' && lastElement.classList.contains(currentClass)) {
-                        lastElement.textContent += `\n${textContent}`;
-                    } else if (currentClass) {
-                        const newElement = document.createElement('p');
-                        newElement.classList.add(currentClass);
-                        newElement.textContent = textContent;
-                        elements.push(newElement);
-                    }
-    
-                    return elements;
-                }, []);
-    
-                const dialogueDiv = document.getElementById('dialogue');
-                formattedLines.forEach(lineElement => dialogueDiv.appendChild(lineElement));
-    
-                // Add a short delay before scrolling to the marker.
-                setTimeout(() => {
-                    const hash = window.location.hash.substring(1);
-                    if (hash) {
-                        const element = document.getElementById(hash);
-                        if (element) {
-                            element.scrollIntoView();
-                        }
-                    }
-                }, 100);
-            });
-    </script>
+          .then(response => response.text())
+          .then((data) => {
+            let lines = data.split("\n");
+      
+            let formattedLines = [];
+            let currentSpeaker;
+            let tempLine = "";
+      
+            for (let i = 0; i < lines.length; i++) {
+              let currentLine = lines[i];
+              let nextLine = lines[i + 1];
+              if (currentLine.startsWith("Me:")) {
+                currentSpeaker = "me";
+                tempLine = currentLine.replace("Me:", "").trim();
+              } else if (currentLine.startsWith("PDF:")) {
+                currentSpeaker = "pdf";
+                tempLine = currentLine.replace("PDF:", "").trim();
+              } else if (nextLine && (nextLine.startsWith("Me:") || nextLine.startsWith("PDF:")) || !nextLine) {
+                tempLine += " " + currentLine.trim();
+                formattedLines.push({ speaker: currentSpeaker, text: tempLine });
+                tempLine = "";
+              } else {
+                tempLine += " " + currentLine.trim();
+              }
+            }
+      
+            let dialogueContainer = document.querySelector("#dialogue");
+            for (let line of formattedLines) {
+              let dialogue = document.createElement("div");
+              dialogue.className = line.speaker;
+              dialogue.innerText = line.text;
+              dialogueContainer.appendChild(dialogue);
+            }
+      
+            // Scroll to element with given id if URL has a fragment
+            let elementId = window.location.hash.substr(1);
+            if (elementId) {
+              let targetElement = document.getElementById(elementId);
+              if (targetElement) {
+                targetElement.scrollIntoView();
+              }
+            }
+          });
+      </script>
+      
     
 </body>
 </html>
