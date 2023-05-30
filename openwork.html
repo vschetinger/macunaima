@@ -70,18 +70,20 @@
                 } else {
                     textContent = line.trim();  // Continue the previous message
                 }
-                const lastElement = elements[elements.length - 1];
-                if (lastElement && lastElement.classList.contains(currentClass)) {
-                    lastElement.textContent += '\n' + textContent;  // Append to the previous message
-                } else {
-                    const element = document.createElement('div');
-                    element.classList.add(currentClass);
-                    element.textContent = textContent;
-                    elements.push(element);
+                if (currentClass !== '') {
+                    const lastElement = elements[elements.length - 1];
+                    if (lastElement && lastElement.classList.contains(currentClass)) {
+                        lastElement.textContent += `\n${textContent}`;
+                    } else {
+                        const newElement = document.createElement('p');
+                        newElement.classList.add(currentClass);
+                        newElement.textContent = textContent;
+                        elements.push(newElement);
+                    }
                 }
                 return elements;
             }, []);
-            const conversationElement = document.getElementById('conversation');
+            const conversationElement = document.querySelector('#conversation');
             formattedLines.forEach(element => conversationElement.appendChild(element));
         });
     </script>
