@@ -53,6 +53,13 @@
             color: #FFFFFF;
             text-shadow: 2px 2px 4px #000000;
         }
+        #footer p {
+            text-align: justify;
+            margin: 0 auto;
+            width: 80%;
+            font-size: 1em;
+            line-height: 1.5;
+        }
         a {
             color: #FFFFFF;
         }
@@ -74,10 +81,10 @@
         <img id="logo" src="logo.png">
     </div>
     <div id="footer">
-        This is a conversation using a tool called 'chatPDF', that allows a conversation with chatGPT about the contents of a pdf. The pdf used in this case was the book "The Open Work" by Umberto Eco, translated by Anna Cancogni. 
-        <br><br>
+        <p>This page showcases a tool called "ChatPDF", that enables a dynamic conversation with the GPT-3.5 language model about the contents of a specific PDF. In this case, the PDF was the book "The Open Work" by Umberto Eco, translated by Anna Cancogni.</p>
         <a href="index.html">Back to Main</a>
     </div>
+    
     <script>
         fetch('ChatPDF-Eco_Umberto_The_Open_Work.txt')
             .then(response => response.text())
