@@ -135,14 +135,16 @@
                         p.textContent = first;
                         dialogue.appendChild(p);
                         for (const part of parts) {
-                            const li = document.createElement('li');
-                            li.textContent = '- ' + part;
-                            dialogue.appendChild(li);
+                            const pExtra = document.createElement('p');
+                            pExtra.classList.add(line.speaker);
+                            pExtra.textContent = '- ' + part;
+                            dialogue.appendChild(pExtra);
                         }
                     }
                 });
         });
     </script>
+    
     
     
     
