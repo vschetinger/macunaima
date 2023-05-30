@@ -86,51 +86,49 @@
     </div>
     
     <script>
-        fetch('ChatPDF-Eco_Umberto_The_Open_Work.txt')
-          .then(response => response.text())
-          .then((data) => {
-            let lines = data.split("\n");
-      
-            let formattedLines = [];
-            let currentSpeaker;
-            let tempLine = "";
-      
-            for (let i = 0; i < lines.length; i++) {
-              let currentLine = lines[i];
-              let nextLine = lines[i + 1];
-              if (currentLine.startsWith("Me:")) {
-                currentSpeaker = "me";
-                tempLine = currentLine.replace("Me:", "").trim();
-              } else if (currentLine.startsWith("PDF:")) {
-                currentSpeaker = "pdf";
-                tempLine = currentLine.replace("PDF:", "").trim();
-              } else if (nextLine && (nextLine.startsWith("Me:") || nextLine.startsWith("PDF:")) || !nextLine) {
-                tempLine += " " + currentLine.trim();
-                formattedLines.push({ speaker: currentSpeaker, text: tempLine });
-                tempLine = "";
-              } else {
-                tempLine += " " + currentLine.trim();
-              }
-            }
-      
-            let dialogueContainer = document.querySelector("#dialogue");
-            for (let line of formattedLines) {
-              let dialogue = document.createElement("div");
-              dialogue.className = line.speaker;
-              dialogue.innerText = line.text;
-              dialogueContainer.appendChild(dialogue);
-            }
-      
-            // Scroll to element with given id if URL has a fragment
-            let elementId = window.location.hash.substr(1);
-            if (elementId) {
-              let targetElement = document.getElementById(elementId);
-              if (targetElement) {
-                targetElement.scrollIntoView();
-              }
-            }
-          });
-      </script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            fetch('ChatPDF-Eco_Umberto_The_Open_Work.txt')
+                .then(response => response.text())
+                .then(text => {
+                    function formattedLines() {
+                        const lines = text.split('\n');
+                        const formatted = [];
+        
+                        let lastSpeaker = '';
+                        let lastContent = '';
+                        for (const line of lines) {
+                            const match = line.match(/^(PDF|Me): (.*)/);
+                            if (match) {
+                                if (lastSpeaker !== '') {
+                                    formatted.push({ speaker: lastSpeaker, content: lastContent });
+                                }
+                                lastSpeaker = match[1];
+                                lastContent = match[2];
+                            } else {
+                                lastContent += '\n' + line;
+                            }
+                        }
+        
+                        if (lastSpeaker !== '') {
+                            formatted.push({ speaker: lastSpeaker, content: lastContent });
+                        }
+                        
+                        return formatted;
+                    }
+                    
+                    const lines = formattedLines();
+        
+                    const content = document.getElementById('content');
+                    for (const line of lines) {
+                        const div = document.createElement('div');
+                        div.classList.add(line.speaker);
+                        div.textContent = line.content;
+                        content.appendChild(div);
+                    }
+                });
+        });
+        </script>
+        
       
     
 </body>
