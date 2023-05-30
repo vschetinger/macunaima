@@ -23,30 +23,38 @@
             margin-bottom: 10px;
             border-radius: 10px;
         }
+
+        .footer img {
+            width: 70px;
+            height: 70px;
+        }
         .user {
-            background-color: #f0f8ff;
+            background-color: #C1E1FF;
             color: #000;
         }
         .ai {
-            background-color: #f5f5dc;
+            background-color: #ECE5B4;
             color: #000;
         }
-        #backButton {
-            display: block;
-            width: 200px;
-            height: 50px;
-            margin: 20px auto;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: 'Abril Fatface', cursive;
+        .footer {
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 0;
+        }
+        .footer img {
+            width: 70px;
+            height: 70px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
             font-size: 20px;
         }
-        #backButton:hover {
-            background-color: #808080;
-        }
+
     </style>
 </head>
 <body>
@@ -61,31 +69,45 @@
             let currentClass = '';
             const formattedLines = lines.reduce((elements, line) => {
                 let textContent;
+                let currentClass;
                 if (line.startsWith('Me:')) {
                     currentClass = 'user';
-                    textContent = line.substring(3).trim();  // Remove 'Me:' prefix
+                    textContent = line.substring(3).trim();
                 } else if (line.startsWith('PDF:')) {
                     currentClass = 'ai';
-                    textContent = line.substring(4).trim();  // Remove 'PDF:' prefix
+                    textContent = line.substring(4).trim();
+                } else if (line.startsWith('{{') && line.endsWith('}}')) {
+                    const marker = line.slice(2, -2);
+                    const markerElement = document.createElement('div');
+                    markerElement.id = marker;
+                    elements.push(markerElement);
+                    return elements;
                 } else {
-                    textContent = line.trim();  // Continue the previous message
+                    textContent = line.trim();
                 }
-                if (currentClass !== '') {
-                    const lastElement = elements[elements.length - 1];
-                    if (lastElement && lastElement.classList.contains(currentClass)) {
-                        lastElement.textContent += `\n${textContent}`;
-                    } else {
-                        const newElement = document.createElement('p');
-                        newElement.classList.add(currentClass);
-                        newElement.textContent = textContent;
-                        elements.push(newElement);
-                    }
+
+                const lastElement = elements[elements.length - 1];
+                if (lastElement && lastElement.tagName === 'P' && lastElement.classList.contains(currentClass)) {
+                    lastElement.textContent += `\n${textContent}`;
+                } else if (currentClass) {
+                    const newElement = document.createElement('p');
+                    newElement.classList.add(currentClass);
+                    newElement.textContent = textContent;
+                    elements.push(newElement);
                 }
+
                 return elements;
             }, []);
+
             const conversationElement = document.querySelector('#conversation');
             formattedLines.forEach(element => conversationElement.appendChild(element));
         });
     </script>
+    <footer class="footer">
+        <img src="logo.png" alt="Logo">
+        <p>This conversation is a part of the OpenAI vs Umberto Eco project.</p>
+        <a href="index.html">Back to main</a>
+    </footer>
+    
 </body>
 </html>
