@@ -83,6 +83,16 @@ footer {
     height: 0;
 }
 
+a {
+    color: #ffb703; 
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e6a501;
+}
+
+
 .video-content h3 {
     position: absolute;
     top: 10px;
